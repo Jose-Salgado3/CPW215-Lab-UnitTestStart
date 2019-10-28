@@ -11,8 +11,15 @@ namespace BusinessLogic
         /// <returns></returns>
         public static bool IsSsn(string ssn)
         {
+            //Replaces all dashes with nothing.
+            ssn = ssn.Replace("-", string.Empty);
 
+            if (ssn.Length != 9)
+            {
                 return false;
+            }
+            else
+                return true;
         }
 
         /// <summary>
