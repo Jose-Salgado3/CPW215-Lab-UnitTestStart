@@ -26,5 +26,6 @@ namespace BusinessLogic
         /// </summary>
         public byte NumberOfCredits { get; set; }
 
+        
     }
 }

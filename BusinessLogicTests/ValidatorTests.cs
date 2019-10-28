@@ -1,3 +1,4 @@
+using BusinessLogic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace BusinessLogicTests
@@ -13,6 +14,7 @@ namespace BusinessLogicTests
         public void IsValidSsn_ValidInput_ReturnTrue(string input)
         {
             //TODO: Test the IsValidSSN method in the Validator class
+            
             Assert.Fail();
         }
 
@@ -34,18 +36,21 @@ namespace BusinessLogicTests
         [DataRow(2000, 0, 50000)]
         public void IsWithinRange_NumInInclusiveRange_ReturnTrue(int test, int min, int max)
         {
+            bool meth = Validator.IsWithinRange(test, min, max);
             //TODO: Test the IsWithinRange method in the Validator class
-            Assert.Fail();
+            Assert.IsTrue(meth);
         }
 
-        [TestMethod]
+        [TestMethod()]
         [DataRow(4, 5, 10)]
         [DataRow(11, 1, 10)]
         [DataRow(10000, 0, 5000)]
         public void IsWithinRange_NumOutsideInclusiveRange_ReturnsFalse(int test, int min, int max)
         {
-            //TODO: Test the IsWithinRange method in the Validator class
-            Assert.Fail();
+            bool meth = Validator.IsWithinRange(test, min, max);
+            //TODO: Test the IsWithinRange m ethod in the Validator class
+            Assert.IsFalse(meth);
+            
         }
     }
 }
