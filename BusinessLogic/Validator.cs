@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace BusinessLogic
 {
@@ -11,15 +12,23 @@ namespace BusinessLogic
         /// <returns></returns>
         public static bool IsSsn(string ssn)
         {
-            //Replaces all dashes with nothing.
-            ssn = ssn.Replace("-", string.Empty);
+            //@"^\d{9}|\d{3}-\d{2}-\d{4}$"
+            string SSNPattern = @"^\d{3}-\d{2}-\d{4}$";
+            //ssn = ssn.Replace("-", string.Empty);
 
-            if (ssn.Length != 9)
+            Regex regex = new Regex(SSNPattern);
+            bool matching = regex.IsMatch(ssn);
+            if (ssn.Contains("-") && matching == true && ssn.Length == 11)
             {
-                return false;
-            }
-            else
                 return true;
+
+            }
+            else if (ssn.Length == 9)
+            {
+                return true;
+            }
+            else 
+                return false;
         }
 
         /// <summary>
