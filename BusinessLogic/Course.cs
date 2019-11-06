@@ -19,27 +19,15 @@ namespace BusinessLogic
         /// <summary>
         /// The instructor teaching the course
         /// </summary>
-        public string InstructorName
-        {
-            get
-            {
-                return InstructorName;
-            }
-            set
-            {
-                Course c = new Course();
-            }
-        }
+        public string InstructorName { get; set; }
 
         /// <summary>
         /// The name of the course
         /// </summary>
         public string CourseName
         {
-            get
-            {
-                return CourseName;
-            }
+            //Not super comfortable with these but trying to get used to it
+            get => CourseName;
 
             set
             {
@@ -48,28 +36,26 @@ namespace BusinessLogic
                     throw new ArgumentNullException();
                 }
                 else
-                    CourseName = value;
+                    CourseName = CourseName;
             }
         }
+
 
         /// <summary>
         /// Number of credits for the course
         /// </summary>
         public byte NumberOfCredits
         {
-            get
-            {
-                return NumberOfCredits;
-            }
-
+            get => NumberOfCredits;
+           
             set
             {
-                if (value > 30 || value < 0)
+                if (value >= 0 || value <= 30)
                 {
-                    throw new ArgumentException
-                        ("Not proper amount of credits");
-                }
                     NumberOfCredits = value;
+                }
+                else
+                    throw new ArgumentException();
             }
         }
         
